@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en"  style="background-color: #3498db;">
+<head>
+    <!-- Meta content -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Example Facebook app using Flask and Python Facebook SDK">
+    <meta name="author" content="github.com/mylsb">
+
+    <!-- These are Open Graph tags.-->
+    <meta property="fb:app_id" content="{{ app_id }}" />
+
+    <title>{{ app_name }}</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+
+    <!--[if IE]>
+      <script type="text/javascript">
+        var tags = ['header', 'section'];
+        while(tags.length)
+          document.createElement(tags.pop());
+      </script>
+    <![endif]-->
+</head>
+<body  style="background-color: #3498db;">
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><b>Social Passport</b></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Connective Media</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <script type="text/javascript">
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '{{ app_id }}',
+                version: 'v2.8',
+                status     : true,
+                cookie     : true,
+                xfbml      : true
+            });
+
+            FB.Event.subscribe('auth.login', function(response) {
+                window.location = window.location;
+            });
+        };
+
+        // Load the SDK Asynchronously
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))  return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- For Spacing -->
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container" >
+       
+        {% block content %} {% endblock %}
+      
+    </div>
+
+</body>
+</html>

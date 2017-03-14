@@ -1,0 +1,69 @@
+ {% extends "base.html" %}
+{% block content %}
+
+        <div class="row mt centered" >
+            <div class="col-lg-6 col-lg-offset-3">
+                <h1>Zipcode {{events[0][0]}}</h1>
+                <h3>{{events[1][0]}}</h3>
+            </div>
+        </div>
+        
+
+        <div class="row mt centered">
+            <div class="col-lg-4">
+                <h4>Zipcode {{events[0][1]}}</h4>
+                <p>{{events[1][1]}}</p>
+            </div>
+
+            <div class="col-lg-4">
+                <h4>Zipcode {{events[0][2]}}</h4>
+                <p> {{events[1][2]}}</p>
+
+            </div>
+
+            <div class="col-lg-4">
+                <h4>Zipcode {{events[0][3]}}</h4>
+                <p>{{events[1][3]}}</p>
+
+            </div>
+        </div>
+    </div>
+    
+
+    
+    
+        <div class="row mt centered">
+            <div class="col-lg-6 col-lg-offset-3">
+                <h1>Trending Buzzword</h1>
+                <h3>Find out the buzzword from tweets about this place.</h3>
+            </div>
+        </div>
+    
+    
+        <div class="row mt centered">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                  </ol>
+                
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="static/{{events[2][0]}}.png" alt="">
+                    </div>
+                     {% for name in events[2][1:] %}
+                    <div class="item">
+                      <img src="static/{{name}}.png" alt="">
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>          
+            </div>
+        </div>
+
+
+{% endblock %}
